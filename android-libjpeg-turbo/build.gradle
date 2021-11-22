@@ -1,0 +1,32 @@
+plugins {
+    id("com.android.library")
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+//    if ("$System.env.GITHUB_ACTIONS" == "true") {
+//        // Regularly lags behind actual latest release - will trigger failure on Github 'Clean' step
+//        ndkVersion '22.1.7171670'
+//    } else {
+        ndkVersion '22.1.7171670'
+//    }
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+
+    externalNativeBuild { 
+        ndkBuild { 
+            path "jni/Android.mk" 
+        }
+    }
+
+}
